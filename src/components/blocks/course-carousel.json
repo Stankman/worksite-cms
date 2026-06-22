@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_course_carousels",
+  "info": {
+    "displayName": "Course Carousel",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    }
+  },
+  "config": {}
+}

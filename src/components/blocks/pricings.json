@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_pricings",
+  "info": {
+    "displayName": "Pricings",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "plans": {
+      "type": "component",
+      "component": "elements.pricing-plan",
+      "repeatable": true,
+      "required": true,
+      "min": 1,
+      "max": 4
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_slides",
+  "info": {
+    "displayName": "Slide",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "buttons": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": true,
+      "max": 2
+    },
+    "media": {
+      "type": "component",
+      "component": "shared.media",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

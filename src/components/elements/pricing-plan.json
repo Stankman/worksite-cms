@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_elements_pricing_plans",
+  "info": {
+    "displayName": "Pricing Plan",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "billing_details": {
+      "type": "string"
+    },
+    "badge": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

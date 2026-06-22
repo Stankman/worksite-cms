@@ -1,0 +1,194 @@
+import type { Schema, Struct } from '@strapi/strapi';
+
+export interface BlocksAllEvents extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_all_events';
+  info: {
+    displayName: 'All Events';
+    icon: 'write';
+  };
+  attributes: {
+    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    description: Schema.Attribute.Text;
+    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface BlocksCourseCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_course_carousels';
+  info: {
+    displayName: 'Course Carousel';
+    icon: 'write';
+  };
+  attributes: {
+    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    description: Schema.Attribute.Text;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface BlocksHero extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_heroes';
+  info: {
+    displayName: 'Hero';
+    icon: 'write';
+  };
+  attributes: {
+    loop: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    slides: Schema.Attribute.Component<'shared.slide', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
+export interface BlocksPricings extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_pricings';
+  info: {
+    displayName: 'Pricings';
+    icon: 'write';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    plans: Schema.Attribute.Component<'elements.pricing-plan', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 4;
+          min: 1;
+        },
+        number
+      >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ElementsPricingPlan extends Struct.ComponentSchema {
+  collectionName: 'components_elements_pricing_plans';
+  info: {
+    displayName: 'Pricing Plan';
+    icon: 'write';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    billing_details: Schema.Attribute.String;
+    cta: Schema.Attribute.Component<'shared.button', false>;
+    description: Schema.Attribute.String;
+    price: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedButton extends Struct.ComponentSchema {
+  collectionName: 'components_shared_buttons';
+  info: {
+    displayName: 'Button';
+    icon: 'write';
+  };
+  attributes: {
+    className: Schema.Attribute.String;
+    disabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    Link: Schema.Attribute.Component<'shared.link', false>;
+    variant: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'destructive', 'ghost']
+    > &
+      Schema.Attribute.DefaultTo<'primary'>;
+  };
+}
+
+export interface SharedDatepicker extends Struct.ComponentSchema {
+  collectionName: 'components_shared_datepickers';
+  info: {
+    displayName: 'Datepicker';
+    icon: 'calendar';
+  };
+  attributes: {
+    date: Schema.Attribute.DateTime;
+  };
+}
+
+export interface SharedLink extends Struct.ComponentSchema {
+  collectionName: 'components_shared_links';
+  info: {
+    displayName: 'Link';
+    icon: 'link';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_blank'>;
+  };
+}
+
+export interface SharedMedia extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media';
+  info: {
+    displayName: 'Media';
+    icon: 'landscape';
+  };
+  attributes: {
+    desktop: Schema.Attribute.Media<'images' | 'videos'>;
+    mobile: Schema.Attribute.Media<'images' | 'videos'>;
+    tablet: Schema.Attribute.Media<'images' | 'videos'>;
+  };
+}
+
+export interface SharedSeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seos';
+  info: {
+    description: '';
+    displayName: 'Seo';
+    icon: 'allergies';
+    name: 'Seo';
+  };
+  attributes: {
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    shareImage: Schema.Attribute.Media<'images'>;
+  };
+}
+
+export interface SharedSlide extends Struct.ComponentSchema {
+  collectionName: 'components_shared_slides';
+  info: {
+    displayName: 'Slide';
+    icon: 'write';
+  };
+  attributes: {
+    buttons: Schema.Attribute.Component<'shared.button', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    media: Schema.Attribute.Component<'shared.media', false>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
+      'blocks.all-events': BlocksAllEvents;
+      'blocks.course-carousel': BlocksCourseCarousel;
+      'blocks.hero': BlocksHero;
+      'blocks.pricings': BlocksPricings;
+      'elements.pricing-plan': ElementsPricingPlan;
+      'shared.button': SharedButton;
+      'shared.datepicker': SharedDatepicker;
+      'shared.link': SharedLink;
+      'shared.media': SharedMedia;
+      'shared.seo': SharedSeo;
+      'shared.slide': SharedSlide;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "slides": {
+      "type": "component",
+      "component": "shared.slide",
+      "repeatable": true,
+      "min": 1
+    },
+    "loop": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}

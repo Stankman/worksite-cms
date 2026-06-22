@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_datepickers",
+  "info": {
+    "displayName": "Datepicker",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "datetime",
+      "required": false
+    }
+  },
+  "config": {}
+}

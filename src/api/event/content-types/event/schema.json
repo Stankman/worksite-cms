@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "events"
+    },
+    "start_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
+    },
+    "type": {
+      "type": "enumeration",
+      "default": "single",
+      "enum": [
+        "single",
+        "range",
+        "multiple"
+      ]
+    },
+    "dates": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "type"
+            },
+            "multiple"
+          ]
+        }
+      },
+      "component": "shared.datepicker",
+      "repeatable": true,
+      "min": 1
+    },
+    "end_date": {
+      "type": "datetime",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "type"
+            },
+            "range"
+          ]
+        }
+      }
+    }
+  }
+}
