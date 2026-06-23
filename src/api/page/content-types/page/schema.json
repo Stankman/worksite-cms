@@ -32,6 +32,21 @@
         }
       },
       "targetField": "title"
+    },
+    "flex": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "blocks.hero",
+        "blocks.features",
+        "blocks.default",
+        "blocks.cards-carousel"
+      ],
+      "min": 0
     }
   }
 }
