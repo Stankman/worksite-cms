@@ -1,15 +1,15 @@
 {
-  "collectionName": "components_blocks_all_events",
+  "collectionName": "components_blocks_features",
   "info": {
-    "displayName": "Events",
-    "icon": "write"
+    "displayName": "Features",
+    "icon": "star"
   },
   "options": {},
   "attributes": {
     "header": {
       "type": "component",
       "component": "elements.section-header",
-      "repeatable": false
+      "repeatable": true
     }
   },
   "config": {}

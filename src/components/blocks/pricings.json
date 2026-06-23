@@ -6,11 +6,10 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
+    "header": {
+      "type": "component",
+      "component": "elements.section-header",
+      "repeatable": true
     },
     "plans": {
       "type": "component",

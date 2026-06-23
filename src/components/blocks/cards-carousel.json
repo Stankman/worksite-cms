@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_cards_carousels",
+  "info": {
+    "displayName": "Cards Carousel",
+    "icon": "rotate"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "component",
+      "component": "elements.section-header",
+      "repeatable": false
+    },
+    "cards": {
+      "type": "component",
+      "component": "elements.feature-card",
+      "repeatable": true,
+      "min": 1
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_blocks_defaults",
+  "info": {
+    "displayName": "Default",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "component",
+      "component": "elements.section-header",
+      "repeatable": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ctas": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": true,
+      "max": 2
+    }
+  },
+  "config": {}
+}

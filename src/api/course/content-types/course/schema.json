@@ -82,17 +82,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "hero": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.hero",
-      "repeatable": false,
-      "required": true
     }
   }
 }

@@ -3,29 +3,71 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface BlocksAllEvents extends Struct.ComponentSchema {
   collectionName: 'components_blocks_all_events';
   info: {
-    displayName: 'All Events';
+    displayName: 'Events';
     icon: 'write';
   };
   attributes: {
-    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
-    description: Schema.Attribute.Text;
-    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String;
+    header: Schema.Attribute.Component<'elements.section-header', false>;
+  };
+}
+
+export interface BlocksCardsCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_cards_carousels';
+  info: {
+    displayName: 'Cards Carousel';
+    icon: 'rotate';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'elements.feature-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    header: Schema.Attribute.Component<'elements.section-header', false>;
   };
 }
 
 export interface BlocksCourseCarousel extends Struct.ComponentSchema {
   collectionName: 'components_blocks_course_carousels';
   info: {
-    displayName: 'Course Carousel';
+    displayName: 'Courses Carousel';
     icon: 'write';
   };
   attributes: {
     courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
-    description: Schema.Attribute.Text;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String;
+    header: Schema.Attribute.Component<'elements.section-header', false>;
+  };
+}
+
+export interface BlocksDefault extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_defaults';
+  info: {
+    displayName: 'Default';
+    icon: 'star';
+  };
+  attributes: {
+    ctas: Schema.Attribute.Component<'shared.button', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    header: Schema.Attribute.Component<'elements.section-header', false>;
+    image: Schema.Attribute.Media<'images'>;
+  };
+}
+
+export interface BlocksFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_features';
+  info: {
+    displayName: 'Features';
+    icon: 'star';
+  };
+  attributes: {
+    header: Schema.Attribute.Component<'elements.section-header', true>;
   };
 }
 
@@ -54,7 +96,7 @@ export interface BlocksPricings extends Struct.ComponentSchema {
     icon: 'write';
   };
   attributes: {
-    description: Schema.Attribute.Text;
+    header: Schema.Attribute.Component<'elements.section-header', true>;
     plans: Schema.Attribute.Component<'elements.pricing-plan', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -64,6 +106,18 @@ export interface BlocksPricings extends Struct.ComponentSchema {
         },
         number
       >;
+  };
+}
+
+export interface ElementsFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_elements_feature_cards';
+  info: {
+    displayName: 'Feature Card';
+    icon: 'file';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
   };
 }
@@ -81,6 +135,19 @@ export interface ElementsPricingPlan extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     price: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ElementsSectionHeader extends Struct.ComponentSchema {
+  collectionName: 'components_elements_section_headers';
+  info: {
+    displayName: 'Section Header';
+    icon: 'emotionHappy';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    eyebrow: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -179,10 +246,15 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.all-events': BlocksAllEvents;
+      'blocks.cards-carousel': BlocksCardsCarousel;
       'blocks.course-carousel': BlocksCourseCarousel;
+      'blocks.default': BlocksDefault;
+      'blocks.features': BlocksFeatures;
       'blocks.hero': BlocksHero;
       'blocks.pricings': BlocksPricings;
+      'elements.feature-card': ElementsFeatureCard;
       'elements.pricing-plan': ElementsPricingPlan;
+      'elements.section-header': ElementsSectionHeader;
       'shared.button': SharedButton;
       'shared.datepicker': SharedDatepicker;
       'shared.link': SharedLink;

@@ -1,19 +1,15 @@
 {
   "collectionName": "components_blocks_course_carousels",
   "info": {
-    "displayName": "Course Carousel",
+    "displayName": "Courses Carousel",
     "icon": "write"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "subtitle": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
+    "header": {
+      "type": "component",
+      "component": "elements.section-header",
+      "repeatable": false
     },
     "courses": {
       "type": "relation",
