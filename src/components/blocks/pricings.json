@@ -9,7 +9,7 @@
     "header": {
       "type": "component",
       "component": "elements.section-header",
-      "repeatable": true
+      "repeatable": false
     },
     "plans": {
       "type": "component",

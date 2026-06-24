@@ -116,7 +116,7 @@ export interface BlocksPricings extends Struct.ComponentSchema {
     icon: 'write';
   };
   attributes: {
-    header: Schema.Attribute.Component<'elements.section-header', true>;
+    header: Schema.Attribute.Component<'elements.section-header', false>;
     plans: Schema.Attribute.Component<'elements.pricing-plan', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -152,7 +152,7 @@ export interface ElementsPricingPlan extends Struct.ComponentSchema {
     badge: Schema.Attribute.String;
     billing_details: Schema.Attribute.String;
     cta: Schema.Attribute.Component<'shared.button', false>;
-    description: Schema.Attribute.String;
+    details: Schema.Attribute.RichText;
     price: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };

@@ -10,8 +10,8 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "string"
+    "details": {
+      "type": "richtext"
     },
     "price": {
       "type": "string",

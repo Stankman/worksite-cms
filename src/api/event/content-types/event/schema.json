@@ -15,6 +15,10 @@
       "type": "string",
       "required": false
     },
+    "private_title": {
+      "type": "string",
+      "private": true
+    },
     "description": {
       "type": "text"
     },
