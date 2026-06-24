@@ -476,9 +476,36 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
         };
       }>;
     events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    events_block: Schema.Attribute.Component<'blocks.all-events', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    features_block: Schema.Attribute.Component<'blocks.cards-carousel', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    pricings_block: Schema.Attribute.Component<'blocks.pricings', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
+    related_courses_block: Schema.Attribute.Component<
+      'blocks.course-carousel',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     schedule: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

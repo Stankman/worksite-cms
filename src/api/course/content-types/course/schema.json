@@ -82,6 +82,46 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "features_block": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.cards-carousel",
+      "repeatable": false
+    },
+    "pricings_block": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.pricings",
+      "repeatable": true
+    },
+    "events_block": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.all-events",
+      "repeatable": true
+    },
+    "related_courses_block": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.course-carousel",
+      "repeatable": true
     }
   }
 }
