@@ -41,6 +41,25 @@ export interface BlocksCourseCarousel extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksCtaBlock extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_cta_blocks';
+  info: {
+    displayName: 'CTA Block';
+    icon: 'bell';
+  };
+  attributes: {
+    buttons: Schema.Attribute.Component<'shared.button', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksDefault extends Struct.ComponentSchema {
   collectionName: 'components_blocks_defaults';
   info: {
@@ -249,6 +268,7 @@ declare module '@strapi/strapi' {
       'blocks.all-events': BlocksAllEvents;
       'blocks.cards-carousel': BlocksCardsCarousel;
       'blocks.course-carousel': BlocksCourseCarousel;
+      'blocks.cta-block': BlocksCtaBlock;
       'blocks.default': BlocksDefault;
       'blocks.features': BlocksFeatures;
       'blocks.hero': BlocksHero;

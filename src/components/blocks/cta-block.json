@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_cta_blocks",
+  "info": {
+    "displayName": "CTA Block",
+    "icon": "bell"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttons": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": true,
+      "max": 2
+    }
+  },
+  "config": {}
+}
