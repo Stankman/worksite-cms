@@ -10,6 +10,11 @@
       "type": "component",
       "component": "elements.section-header",
       "repeatable": true
+    },
+    "cards": {
+      "type": "component",
+      "component": "elements.feature-card",
+      "repeatable": true
     }
   },
   "config": {}

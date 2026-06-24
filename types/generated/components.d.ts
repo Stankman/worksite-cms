@@ -67,6 +67,7 @@ export interface BlocksFeatures extends Struct.ComponentSchema {
     icon: 'star';
   };
   attributes: {
+    cards: Schema.Attribute.Component<'elements.feature-card', true>;
     header: Schema.Attribute.Component<'elements.section-header', true>;
   };
 }
