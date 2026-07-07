@@ -28,7 +28,7 @@
     "className": {
       "type": "string"
     },
-    "Link": {
+    "link": {
       "type": "component",
       "component": "shared.link",
       "repeatable": false

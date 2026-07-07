@@ -33,7 +33,7 @@
       },
       "targetField": "title"
     },
-    "flex": {
+    "dynamicZone": {
       "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
@@ -44,7 +44,10 @@
         "blocks.hero",
         "blocks.features",
         "blocks.default",
-        "blocks.cards-carousel"
+        "blocks.cards-carousel",
+        "blocks.cta-block",
+        "blocks.course-carousel",
+        "blocks.partners"
       ],
       "min": 0
     }

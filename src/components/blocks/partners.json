@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_partners",
+  "info": {
+    "displayName": "Partners",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "component",
+      "component": "elements.section-header",
+      "repeatable": false
+    },
+    "partners": {
+      "type": "component",
+      "component": "elements.partner",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

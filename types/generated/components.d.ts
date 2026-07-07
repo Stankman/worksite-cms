@@ -109,6 +109,18 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksPartners extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_partners';
+  info: {
+    displayName: 'Partners';
+    icon: 'alien';
+  };
+  attributes: {
+    header: Schema.Attribute.Component<'elements.section-header', false>;
+    partners: Schema.Attribute.Component<'elements.partner', true>;
+  };
+}
+
 export interface BlocksPricings extends Struct.ComponentSchema {
   collectionName: 'components_blocks_pricings';
   info: {
@@ -139,6 +151,19 @@ export interface ElementsFeatureCard extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface ElementsPartner extends Struct.ComponentSchema {
+  collectionName: 'components_elements_partners';
+  info: {
+    displayName: 'Partner';
+    icon: 'alien';
+  };
+  attributes: {
+    link: Schema.Attribute.Component<'shared.link', false>;
+    logo: Schema.Attribute.Media<'images'>;
+    white_logo: Schema.Attribute.Media<'images'>;
   };
 }
 
@@ -181,7 +206,7 @@ export interface SharedButton extends Struct.ComponentSchema {
     className: Schema.Attribute.String;
     disabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
-    Link: Schema.Attribute.Component<'shared.link', false>;
+    link: Schema.Attribute.Component<'shared.link', false>;
     variant: Schema.Attribute.Enumeration<
       ['primary', 'secondary', 'tertiary', 'destructive', 'ghost']
     > &
@@ -272,8 +297,10 @@ declare module '@strapi/strapi' {
       'blocks.default': BlocksDefault;
       'blocks.features': BlocksFeatures;
       'blocks.hero': BlocksHero;
+      'blocks.partners': BlocksPartners;
       'blocks.pricings': BlocksPricings;
       'elements.feature-card': ElementsFeatureCard;
+      'elements.partner': ElementsPartner;
       'elements.pricing-plan': ElementsPricingPlan;
       'elements.section-header': ElementsSectionHeader;
       'shared.button': SharedButton;
