@@ -288,7 +288,7 @@ export interface SharedSlide extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'blocks.all-events': BlocksAllEvents;
       'blocks.cards-carousel': BlocksCardsCarousel;
