@@ -6,14 +6,13 @@
   },
   "options": {},
   "attributes": {
-    "link": {
-      "type": "component",
-      "component": "shared.link",
-      "repeatable": false
+    "name": {
+      "type": "string"
     },
     "logo": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -21,9 +20,14 @@
     "white_logo": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
+    },
+    "url": {
+      "type": "string",
+      "required": true
     }
   },
   "config": {}

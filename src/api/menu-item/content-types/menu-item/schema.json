@@ -23,21 +23,6 @@
       "type": "boolean",
       "default": false
     },
-    "link": {
-      "type": "component",
-      "conditions": {
-        "visible": {
-          "==": [
-            {
-              "var": "has_children"
-            },
-            false
-          ]
-        }
-      },
-      "component": "shared.link",
-      "repeatable": false
-    },
     "submenu_items": {
       "type": "relation",
       "relation": "oneToMany",
@@ -52,6 +37,14 @@
           ]
         }
       }
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "is_external": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

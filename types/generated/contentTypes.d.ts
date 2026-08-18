@@ -482,13 +482,22 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cta_block: Schema.Attribute.Component<'blocks.cta-block', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     description: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    events: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::element-event.element-event'
+    >;
     events_block: Schema.Attribute.Component<'blocks.all-events', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -512,7 +521,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     related_courses_block: Schema.Attribute.Component<
       'blocks.course-carousel',
-      true
+      false
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -540,40 +549,33 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiEventEvent extends Struct.CollectionTypeSchema {
-  collectionName: 'events';
+export interface ApiElementEventElementEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'element_events';
   info: {
-    displayName: 'Event';
-    pluralName: 'events';
-    singularName: 'event';
+    displayName: 'Element Event';
+    pluralName: 'element-events';
+    singularName: 'element-event';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    course: Schema.Attribute.Relation<'manyToOne', 'api::course.course'>;
+    courses: Schema.Attribute.Relation<'manyToMany', 'api::course.course'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dates: Schema.Attribute.Component<'shared.datepicker', true> &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
-    description: Schema.Attribute.Text;
-    end_date: Schema.Attribute.DateTime;
-    link: Schema.Attribute.Component<'shared.link', false>;
+    external_id: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::element-event.element-event'
+    > &
       Schema.Attribute.Private;
-    private_title: Schema.Attribute.String & Schema.Attribute.Private;
+    payload: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
-    start_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
-    title: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<['single', 'range', 'multiple']> &
-      Schema.Attribute.DefaultTo<'single'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -739,7 +741,7 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     has_children: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    link: Schema.Attribute.Component<'shared.link', false>;
+    is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -757,6 +759,7 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1366,7 +1369,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::course.course': ApiCourseCourse;
-      'api::event.event': ApiEventEvent;
+      'api::element-event.element-event': ApiElementEventElementEvent;
       'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
       'api::header.header': ApiHeaderHeader;

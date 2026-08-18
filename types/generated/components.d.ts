@@ -76,6 +76,7 @@ export interface BlocksDefault extends Struct.ComponentSchema {
       >;
     header: Schema.Attribute.Component<'elements.section-header', false>;
     image: Schema.Attribute.Media<'images'>;
+    rtl: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -161,9 +162,10 @@ export interface ElementsPartner extends Struct.ComponentSchema {
     icon: 'alien';
   };
   attributes: {
-    link: Schema.Attribute.Component<'shared.link', false>;
-    logo: Schema.Attribute.Media<'images'>;
-    white_logo: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    name: Schema.Attribute.String;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+    white_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
   };
 }
 
@@ -190,7 +192,7 @@ export interface ElementsSectionHeader extends Struct.ComponentSchema {
     icon: 'emotionHappy';
   };
   attributes: {
-    description: Schema.Attribute.String;
+    description: Schema.Attribute.RichText;
     eyebrow: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
@@ -205,10 +207,21 @@ export interface SharedButton extends Struct.ComponentSchema {
   attributes: {
     className: Schema.Attribute.String;
     disabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
-    link: Schema.Attribute.Component<'shared.link', false>;
     variant: Schema.Attribute.Enumeration<
-      ['primary', 'secondary', 'tertiary', 'destructive', 'ghost']
+      [
+        'default',
+        'primary',
+        'destructive',
+        'outline',
+        'secondary',
+        'ghost',
+        'link',
+        'blue',
+        'red',
+      ]
     > &
       Schema.Attribute.DefaultTo<'primary'>;
   };
@@ -222,20 +235,6 @@ export interface SharedDatepicker extends Struct.ComponentSchema {
   };
   attributes: {
     date: Schema.Attribute.DateTime;
-  };
-}
-
-export interface SharedLink extends Struct.ComponentSchema {
-  collectionName: 'components_shared_links';
-  info: {
-    displayName: 'Link';
-    icon: 'link';
-  };
-  attributes: {
-    href: Schema.Attribute.String & Schema.Attribute.Required;
-    label: Schema.Attribute.String & Schema.Attribute.Required;
-    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
-      Schema.Attribute.DefaultTo<'_blank'>;
   };
 }
 
@@ -305,7 +304,6 @@ declare module '@strapi/strapi' {
       'elements.section-header': ElementsSectionHeader;
       'shared.button': SharedButton;
       'shared.datepicker': SharedDatepicker;
-      'shared.link': SharedLink;
       'shared.media': SharedMedia;
       'shared.seo': SharedSeo;
       'shared.slide': SharedSlide;

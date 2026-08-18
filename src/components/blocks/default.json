@@ -24,6 +24,10 @@
       "component": "shared.button",
       "repeatable": true,
       "max": 2
+    },
+    "rtl": {
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

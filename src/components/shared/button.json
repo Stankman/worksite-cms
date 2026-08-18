@@ -14,11 +14,15 @@
       "type": "enumeration",
       "default": "primary",
       "enum": [
+        "default",
         "primary",
-        "secondary",
-        "tertiary",
         "destructive",
-        "ghost"
+        "outline",
+        "secondary",
+        "ghost",
+        "link",
+        "blue",
+        "red"
       ]
     },
     "disabled": {
@@ -28,10 +32,14 @@
     "className": {
       "type": "string"
     },
-    "link": {
-      "type": "component",
-      "component": "shared.link",
-      "repeatable": false
+    "is_external": {
+      "type": "boolean",
+      "default": true
+    },
+    "href": {
+      "type": "string",
+      "required": true,
+      "regex": "^(?:https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6})?(?:\\/[-a-zA-Z0-9()@:%_+.~#?&\\/=]*)?$"
     }
   },
   "config": {}

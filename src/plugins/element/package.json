@@ -1,0 +1,19 @@
+{
+  "name": "strapi-plugin-element",
+  "version": "0.0.1",
+  "description": "Element451 integration plugin",
+  "exports": {
+    "./strapi-admin": {
+      "source": "./strapi-admin.ts",
+      "import": "./strapi-admin.ts",
+      "require": "./strapi-admin.ts",
+      "default": "./strapi-admin.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "strapi": {
+    "name": "element",
+    "kind": "plugin"
+  },
+  "main": "strapi-server.ts"
+}

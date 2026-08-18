@@ -55,9 +55,9 @@
     },
     "events": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::event.event",
-      "mappedBy": "course"
+      "relation": "manyToMany",
+      "target": "api::element-event.element-event",
+      "inversedBy": "courses"
     },
     "cover": {
       "type": "component",
@@ -121,6 +121,16 @@
         }
       },
       "component": "blocks.course-carousel",
+      "repeatable": false
+    },
+    "cta_block": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.cta-block",
       "repeatable": true
     }
   }

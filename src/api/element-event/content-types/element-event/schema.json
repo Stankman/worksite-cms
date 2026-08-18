@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "element_events",
+  "info": {
+    "singularName": "element-event",
+    "pluralName": "element-events",
+    "displayName": "Element Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "external_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "payload": {
+      "type": "json"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "mappedBy": "events"
+    }
+  }
+}
